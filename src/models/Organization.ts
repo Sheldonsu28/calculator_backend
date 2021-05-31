@@ -43,7 +43,7 @@ const organizationSchema = new Schema<OrganizationDocument>(
       unique: true,
       lowercase: false,
       max: 80,
-      min: 3
+      min: 3,
     },
     address: {
       type: String,
@@ -51,19 +51,19 @@ const organizationSchema = new Schema<OrganizationDocument>(
       unique: false,
       lowercase: false,
       max: 80,
-      min: 3
+      min: 3,
     },
     owner: {
       type: Schema.Types.ObjectId,
-      ref:'User',
+      ref: "User",
       required: true,
       unique: false,
     },
-    isActive:{
+    isActive: {
       type: Boolean,
       required: true,
-    }
-  },   
+    },
+  },
   {
     timestamps: true,
     toJSON: {
@@ -99,4 +99,7 @@ export interface OrganizationModel extends Model<OrganizationDocument> {
   build(props: Partial<OrganizationProps>): OrganizationDocument;
 }
 
-export const Organization = mongoose.model<OrganizationDocument, OrganizationModel>("Organization", organizationSchema);
+export const Organization = mongoose.model<
+  OrganizationDocument,
+  OrganizationModel
+>("Organization", organizationSchema);
