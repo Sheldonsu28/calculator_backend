@@ -6,31 +6,31 @@
 
 import mongoose, { Schema, Document, Model, ObjectId, mongo } from "mongoose";
 
-export interface EventProps{
-  eventName: String,
-  description: String,
-  detail: String,
-  organizer: ObjectId,
-  organization: ObjectId,
+export interface EventProps {
+  eventName: String;
+  description: String;
+  detail: String;
+  organizer: ObjectId;
+  organization: ObjectId;
   //status can be one of draft/open/closed/completed
-  status: String,
-  startDate: Date,
-  endDate: Date,
+  status: String;
+  startDate: Date;
+  endDate: Date;
 }
 
 export type EventDocument = Document<EventProps> & {
-  eventName: String,
-  description: String,
-  detail: String,
-  organizer: ObjectId,
-  organization: ObjectId,
+  eventName: String;
+  description: String;
+  detail: String;
+  organizer: ObjectId;
+  organization: ObjectId;
   //status can be one of draft/open/closed/completed
-  status: String,
-  startDate: Date,
-  endDate: Date,
-  creatAt: Date,
-  updateAt: Date,
-}
+  status: String;
+  startDate: Date;
+  endDate: Date;
+  creatAt: Date;
+  updateAt: Date;
+};
 
 /**
  * Schema used to model events. Required by mongoose.
@@ -38,13 +38,13 @@ export type EventDocument = Document<EventProps> & {
 
 const eventSchema = new Schema<EventDocument>(
   {
-    eventName:{
+    eventName: {
       type: String,
       required: true,
       max: 80,
       min: 10,
     },
-    description:{
+    description: {
       type: String,
       max: 150,
     },
@@ -55,25 +55,25 @@ const eventSchema = new Schema<EventDocument>(
     },
     organizer: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
-      require: true
+      ref: "User",
+      require: true,
     },
-    organization:{
+    organization: {
       type: Schema.Types.ObjectId,
-      ref: 'Organization'
+      ref: "Organization",
     },
-    status:{
+    status: {
       type: String,
       required: true,
     },
-    startDate:{
+    startDate: {
       type: Date,
       reqired: true,
     },
-    endDate:{
+    endDate: {
       type: Date,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,
@@ -110,4 +110,7 @@ export interface EventModel extends Model<EventDocument> {
   build(props: Partial<EventProps>): EventDocument;
 }
 
-export const Event = mongoose.model<EventDocument, EventModel>('Event', eventSchema);
+export const Event = mongoose.model<EventDocument, EventModel>(
+  "Event",
+  eventSchema
+);
