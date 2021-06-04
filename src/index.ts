@@ -38,18 +38,18 @@ const start = () => {
   }
 
   // Connect to Mongo DB
-  mongoose
-    .connect(process.env.DB_URI!, {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useUnifiedTopology: true,
-    })
-    .then(() => {
-      console.log(`Connected to database.`);
-    })
-    .catch((error: Error) => {
-      console.error(error);
-    });
+  // mongoose
+  //   .connect(process.env.DB_URI!, {
+  //     useNewUrlParser: true,
+  //     useCreateIndex: true,
+  //     useUnifiedTopology: true,
+  //   })
+  //   .then(() => {
+  //     console.log(`Connected to database.`);
+  //   })
+  //   .catch((error: Error) => {
+  //     console.error(error);
+  //   });
 
   // Server configuration
   const PORT = app.get("port");
